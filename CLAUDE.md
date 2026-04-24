@@ -4,7 +4,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a real estate application. Update this section as the tech stack and architecture are established.
+A real estate management web app with Supabase authentication.
+- **Stack**: React 19 + Vite + React Router v7 + Supabase JS v2
+- **Auth**: Supabase email/password (session managed via `AuthContext`)
+- **Styling**: CSS Modules per page/component (no CSS framework)
 
 ## Git Rules
 
@@ -16,38 +19,42 @@ git commit -m "<concise description of change>"
 git push origin main
 ```
 
-- Commit messages must be in English, imperative mood (e.g., "Add property search filter", "Fix map rendering bug").
+- Commit messages in English, imperative mood.
 - Never force-push to `main`.
-- If the remote is not yet set up:
-  ```bash
-  git remote add origin <GitHub repo URL>
-  git push -u origin main
-  ```
 
 ## Development Commands
 
-> Update this section once the project is initialized.
-
 ```bash
-# Install dependencies
-npm install
-
-# Start dev server
-npm run dev
-
-# Build for production
-npm run build
-
-# Run tests
-npm test
-
-# Run a single test file
-npm test -- <path/to/test-file>
-
-# Lint
-npm run lint
+npm install        # Install dependencies
+npm run dev        # Start dev server (http://localhost:5173)
+npm run build      # Production build
+npm run preview    # Preview production build locally
+npm run lint       # ESLint check
 ```
 
 ## Architecture
 
-> Document high-level architecture here as the project grows (data flow, key modules, external APIs used, etc.).
+```
+src/
+  supabaseClient.js      # Supabase client singleton (reads .env)
+  AuthContext.jsx        # React context — provides session to all pages
+  App.jsx                # Router setup; wraps everything in AuthProvider
+  components/
+    PrivateRoute.jsx     # Redirects to /login when unauthenticated
+  pages/
+    Login.jsx            # Sign-in form
+    Register.jsx         # Sign-up form
+    Properties.jsx       # Protected property list (dummy data)
+    Auth.module.css      # Shared styles for Login + Register
+    Properties.module.css
+```
+
+### Auth flow
+1. `AuthContext` calls `supabase.auth.getSession()` on mount and subscribes to `onAuthStateChange`.
+2. `PrivateRoute` reads `session` from context — `undefined` = loading (renders null), `null` = redirect to `/login`.
+3. After successful login/signup, navigate to `/`.
+
+### Environment variables
+Stored in `.env` (git-ignored). Both must be prefixed `VITE_` so Vite exposes them to the browser:
+- `VITE_SUPABASE_URL`
+- `VITE_SUPABASE_ANON_KEY`

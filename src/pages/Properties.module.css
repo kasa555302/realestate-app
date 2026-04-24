@@ -1,0 +1,113 @@
+/* Layout and styles for the Properties (property list) page */
+.page {
+  min-height: 100vh;
+  background: #f0f4f8;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 32px;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #2d3748;
+  margin: 0;
+}
+
+.userArea {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.email {
+  font-size: 0.875rem;
+  color: #718096;
+}
+
+.logoutBtn {
+  padding: 8px 18px;
+  background: #e53e3e;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.logoutBtn:hover {
+  background: #c53030;
+}
+
+.main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2d3748;
+  margin-bottom: 28px;
+}
+
+/* Responsive grid: 1 → 2 → 3 columns */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 28px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.cardIcon {
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+.cardName {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #2d3748;
+  margin: 0 0 8px;
+  line-height: 1.5;
+}
+
+.cardArea {
+  font-size: 0.875rem;
+  color: #718096;
+  margin: 0 0 16px;
+}
+
+.cardRent {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #4299e1;
+  margin: 0;
+}
+
+.perMonth {
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #718096;
+}
