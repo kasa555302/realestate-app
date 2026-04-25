@@ -58,3 +58,11 @@ src/
 Stored in `.env` (git-ignored). Both must be prefixed `VITE_` so Vite exposes them to the browser:
 - `VITE_SUPABASE_URL`
 - `VITE_SUPABASE_ANON_KEY`
+
+## Deploy
+
+| 項目 | 値 |
+|------|-----|
+| 本番 URL | https://realestate-lkk82fmrt-kasa555302s-projects.vercel.app/ |
+| ホスティング | Vercel |
+| Supabase プロジェクト名 | realestate-app |
